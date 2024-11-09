@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { UserPage } from "./User/UserPage";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "@fontsource/montserrat";
+
+const theme = createTheme({
+  typography: {
+    fontFamily: "Montserrat, Arial, sans-serif",
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<UserPage />} />
+          {/* <Route
+            path="/admin/login"
+            element={
+              <>
+                <Navbar />
+                <Login />
+              </>
+            }
+          />
+          <Route
+            path="/admin/sign-up"
+            element={
+              <>
+                <Navbar />
+                <SignUp />
+              </>
+            }
+          ></Route>
+          <Route path="/admin/coupons" element={<><Navbar /><CouponsPage /></>}></Route>
+          <Route path="/admin/reports" element={<><Navbar /><ReportsPage /></>}></Route> */}
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
