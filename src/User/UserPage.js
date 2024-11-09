@@ -5,7 +5,9 @@ import { UserOrder } from './UserOrder';
 import { useState } from 'react';
 
 export function UserPage() {
-  const [price, setPrice] = useState('100');
+  
+  //The initial price value is 100.
+  const [price, setPrice] = useState("100");
   return (
     <>
       <Navbar />
