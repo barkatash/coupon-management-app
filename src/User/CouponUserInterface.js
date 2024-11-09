@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Box, Typography, TextField, Button } from '@mui/material';
+
 export function CouponUserInterface({ price, setPrice }) {
+
   //I assumed each coupon brings 20% discount, but the coupon details should be fetched from API.
   const [couponCode, setCouponCode] = useState('');
   const handleCouponCodeInput = (e) => {
