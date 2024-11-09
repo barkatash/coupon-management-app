@@ -3,7 +3,9 @@ import { Box, Typography, TextField, Button } from '@mui/material';
 
 export function CouponUserInterface({ price, setPrice }) {
 
-  //I assumed each coupon brings 20% discount, but the coupon details should be fetched from API.
+  // I assumed each coupon code brings 20% discount and that any coupon code is valid,
+  // but the coupon details should be fetched from API.
+  
   const [couponCode, setCouponCode] = useState('');
   const handleCouponCodeInput = (e) => {
     setCouponCode(e.target.value);
@@ -82,7 +84,9 @@ export function CouponUserInterface({ price, setPrice }) {
             backgroundColor: '#b71c1c',
           },
         }}
-        onClick={() => setPrice(Math.round(price * 0.8))}
+        onClick={() => {
+          if(couponCode.length > 0) setPrice(Math.round(price * 0.8));
+        }}
       >
         Apply
       </Button>
