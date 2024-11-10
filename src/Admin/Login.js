@@ -1,10 +1,20 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, Alert } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export function Login() {
   const { register, handleSubmit } = useForm();
+  const [successfulLogin, setSuccessfulLogin] = useState(false);
+  const [unsuccessfulLogin, setUnsuccessfulLogin] = useState(false);
   const onSubmit = (data) => {
-    console.log(data);
+    if (data.email == "bk@gmail.com" && data.password == "12345678") {
+      setSuccessfulLogin(true);
+      setUnsuccessfulLogin(false);
+    } else {
+      setSuccessfulLogin(false);
+      setUnsuccessfulLogin(true);
+    }
   };
 
   return (
@@ -64,12 +74,29 @@ export function Login() {
             fontSize: "1rem",
             width: "100%",
             borderRadius: "10px",
-            marginTop: "20px"
+            marginTop: "20px",
           }}
         >
           Login
         </Button>
       </form>
+      {successfulLogin && (
+        <Alert
+          icon={<CheckIcon fontSize="inherit" />}
+          severity="success"
+          sx={{ marginTop: "4%" }}
+        >
+          Login successful.
+        </Alert>
+      )}
+      {unsuccessfulLogin && (
+        <Alert
+          severity="error"
+          sx={{ marginTop: "4%" }}
+        >
+          Email/password is incorrect.
+        </Alert>
+      )}
     </Box>
   );
 }
