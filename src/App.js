@@ -3,6 +3,9 @@ import { UserPage } from "./User/UserPage";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "@fontsource/montserrat";
+import { Navbar } from "./Admin/Navbar";
+import { Login } from "./Admin/Login";
+import { SignUp } from "./Admin/SignUp";
 
 const theme = createTheme({
   typography: {
@@ -16,7 +19,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<UserPage />} />
-          {/* <Route
+          <Route
             path="/admin/login"
             element={
               <>
@@ -34,8 +37,24 @@ function App() {
               </>
             }
           ></Route>
-          <Route path="/admin/coupons" element={<><Navbar /><CouponsPage /></>}></Route>
-          <Route path="/admin/reports" element={<><Navbar /><ReportsPage /></>}></Route> */}
+          {/* <Route
+            path="/admin/coupons"
+            element={
+              <>
+                <Navbar />
+                <CouponsPage />
+              </>
+            }
+          ></Route>
+          <Route
+            path="/admin/reports"
+            element={
+              <>
+                <Navbar />
+                <ReportsPage />
+              </>
+            }
+          ></Route> */}
         </Routes>
       </Router>
     </ThemeProvider>
