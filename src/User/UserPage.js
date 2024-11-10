@@ -8,6 +8,9 @@ export function UserPage() {
 
   //The initial price value is 100.
   const [price, setPrice] = useState("100");
+
+  //The initial amount of coupons used is 0.
+  const [couponsAmount, setCouponsAmount] = useState(0);
   return (
     <>
       <Navbar />
@@ -15,10 +18,10 @@ export function UserPage() {
         <Navbar />
         <Grid container spacing={2}>
           <Grid item xs={5}>
-            <UserOrder price={price}/>
+            <UserOrder price={price} couponsAmount={couponsAmount}/>
           </Grid>
           <Grid item xs={7}>
-            <CouponUserInterface price={price} setPrice={setPrice} />
+            <CouponUserInterface price={price} setPrice={setPrice} couponsAmount={couponsAmount} setCouponsAmount={setCouponsAmount}/>
           </Grid>
         </Grid>
       </Box>
