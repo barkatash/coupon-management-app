@@ -1,12 +1,20 @@
-import { Box, Button, Typography, Grid, TextField } from "@mui/material";
+import { Box, Button, Typography, Grid, TextField, Alert } from "@mui/material";
+import CheckIcon from "@mui/icons-material/Check";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export const SignUp = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const [successfulSignUp, setSuccessfulSignUp] = useState(false);
 
   const onSubmit = async (data) => {
-    console.log('User created', data);
+    setSuccessfulSignUp(true);
   };
 
   const password = watch("password");
@@ -27,7 +35,6 @@ export const SignUp = () => {
               lineHeight: 1.5,
               fontWeight: "600",
               textAlign: "center",
-
             }}
           >
             Make.
@@ -69,7 +76,7 @@ export const SignUp = () => {
               padding: "15px",
               marginLeft: "40%",
               textTransform: "capitalize",
-              color: "black"
+              color: "black",
             }}
             component={Link}
             to="/admin/login"
@@ -82,8 +89,8 @@ export const SignUp = () => {
             <Typography
               variant="h4"
               sx={{
-                marginBottom: "30px",
-                marginTop: "60px",
+                marginBottom: "25px",
+                marginTop: "40px",
                 lineHeight: 1.5,
                 fontWeight: "600",
               }}
@@ -96,24 +103,26 @@ export const SignUp = () => {
                 <TextField
                   required
                   {...register("email", {
-                    pattern:{
-                       value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                       message: "Invalid email address"
-                      }
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Invalid email address",
+                    },
                   })}
                   id="email"
                   label="Email"
                   fullWidth
                   error={!!errors.email}
-                  helperText={errors.email ? errors.email.message : "Enter email address"}
+                  helperText={
+                    errors.email ? errors.email.message : "Enter email address"
+                  }
                 />
               </div>
- 
+
               <div>
                 <TextField
                   required
                   {...register("mobileNumber", {
-                    maxLength: { 
+                    maxLength: {
                       value: 10,
                       message: "mobile number must be 10 characters length",
                     },
@@ -124,7 +133,11 @@ export const SignUp = () => {
                   })}
                   id="mobile-number"
                   label="Mobile Number"
-                  helperText={errors.mobileNumber ? errors.mobileNumber.message : "Enter your phone number"}
+                  helperText={
+                    errors.mobileNumber
+                      ? errors.mobileNumber.message
+                      : "Enter your phone number"
+                  }
                   fullWidth
                 />
               </div>
@@ -152,14 +165,17 @@ export const SignUp = () => {
               <TextField
                 required
                 {...register("password", {
-                  minLength: { value: 8,
+                  minLength: {
+                    value: 8,
                     message: "password must have at least 8 characters",
-                  }
+                  },
                 })}
                 id="password"
                 type="password"
                 label="Password"
-                helperText={errors.password ? errors.password.message : "Enter password"}
+                helperText={
+                  errors.password ? errors.password.message : "Enter password"
+                }
                 fullWidth
               />
               <TextField
@@ -171,7 +187,11 @@ export const SignUp = () => {
                 })}
                 id="confirm-password"
                 label="Confirm Password"
-                helperText={errors.confirmPassword ? errors.confirmPassword.message : "Enter password again"}
+                helperText={
+                  errors.confirmPassword
+                    ? errors.confirmPassword.message
+                    : "Enter password again"
+                }
                 fullWidth
               />
               <div>
@@ -180,19 +200,28 @@ export const SignUp = () => {
                   type="submit"
                   sx={{
                     width: "54ch",
-                    margin: "40px",
+                    margin: "23px",
                     fontWeight: "600",
                     fontSize: "1.1rem",
                     borderRadius: "30px",
                     backgroundColor: "#b0bec5",
                     padding: "10px",
                     textTransform: "capitalize",
-                    color: "black"
+                    color: "black",
                   }}
                 >
                   Sign Up
                 </Button>
               </div>
+              {successfulSignUp && (
+                <Alert
+                  icon={<CheckIcon fontSize="inherit" />}
+                  severity="success"
+                  sx={{ width: "54ch",justifySelf: "center" }}
+                >
+                  Your account has been created successfully!
+                </Alert>
+              )}
             </Box>
           </Box>
         </Grid>
