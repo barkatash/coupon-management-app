@@ -213,15 +213,25 @@ export const SignUp = () => {
                   Sign Up
                 </Button>
               </div>
-              {successfulSignUp && (
-                <Alert
-                  icon={<CheckIcon fontSize="inherit" />}
-                  severity="success"
-                  sx={{ width: "54ch",justifySelf: "center" }}
-                >
-                  Your account has been created successfully!
-                </Alert>
-              )}
+              <Box
+                sx={{
+                  minHeight: "60px",
+                  width: "54ch",
+                  display: "flex",
+                  justifyContent: "center",
+                  justifySelf: "center"
+                }}
+              >
+                {successfulSignUp && (
+                  <Alert
+                    icon={<CheckIcon fontSize="inherit" />}
+                    severity="success"
+                    sx={{ width: "100%", justifySelf: "center" }}
+                  >
+                    Your account has been created successfully!
+                  </Alert>
+                )}
+              </Box>
             </Box>
           </Box>
         </Grid>
