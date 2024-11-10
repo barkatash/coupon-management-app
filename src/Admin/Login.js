@@ -8,7 +8,7 @@ export function Login() {
   const [successfulLogin, setSuccessfulLogin] = useState(false);
   const [unsuccessfulLogin, setUnsuccessfulLogin] = useState(false);
   const onSubmit = (data) => {
-    if (data.email == "bk@gmail.com" && data.password == "12345678") {
+    if (data.email === "bk@gmail.com" && data.password === "12345678") {
       setSuccessfulLogin(true);
       setUnsuccessfulLogin(false);
     } else {
