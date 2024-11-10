@@ -62,7 +62,6 @@ export const SignUp = () => {
           <Button
             variant="contained"
             sx={{
-              color: "#fff",
               fontWeight: "700",
               fontSize: "1rem",
               borderRadius: "30px",
