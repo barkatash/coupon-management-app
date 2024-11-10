@@ -6,6 +6,8 @@ import "@fontsource/montserrat";
 import { Navbar } from "./Admin/Navbar";
 import { Login } from "./Admin/Login";
 import { SignUp } from "./Admin/SignUp";
+import { CouponsPage } from "./Admin/CouponsPage";
+import { ReportsPage } from "./Admin/ReportsPage";
 
 const theme = createTheme({
   typography: {
@@ -18,7 +20,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>
+          {/* This is a route for the user to insert coupon code and see the new price.*/}
           <Route path="/" element={<UserPage />} />
+
+          {/* This is a route for admin login.*/}
           <Route
             path="/admin/login"
             element={
@@ -28,6 +33,7 @@ function App() {
               </>
             }
           />
+          {/* This is a route for admin sign up.*/}
           <Route
             path="/admin/sign-up"
             element={
@@ -37,7 +43,8 @@ function App() {
               </>
             }
           ></Route>
-          {/* <Route
+          {/* This is a route for admin coupons system. */}
+          <Route
             path="/admin/coupons"
             element={
               <>
@@ -46,6 +53,7 @@ function App() {
               </>
             }
           ></Route>
+          {/* This is a route for admin reports system. */}
           <Route
             path="/admin/reports"
             element={
@@ -54,7 +62,7 @@ function App() {
                 <ReportsPage />
               </>
             }
-          ></Route> */}
+          ></Route>
         </Routes>
       </Router>
     </ThemeProvider>
