@@ -27,10 +27,11 @@ export const SignUp = () => {
               lineHeight: 1.5,
               fontWeight: "600",
               textAlign: "center",
+
             }}
           >
-            MAKE.
-            <br /> MANGEMENT. <br /> EASIER.
+            Make.
+            <br /> Mangement. <br /> Easier.
           </Typography>
           <Typography
             variant="h5"
@@ -88,7 +89,7 @@ export const SignUp = () => {
                 fontWeight: "600",
               }}
             >
-              CREATE YOUR ACCOUNT
+              Create Your Account
             </Typography>
 
             <Box sx={{ "& .MuiTextField-root": { m: 1, width: "70ch" } }}>
